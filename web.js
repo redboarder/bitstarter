@@ -12,7 +12,7 @@ var data = fs.readFileSync('index.html', "utf-8");
 
     // Invoke the next step here however you like
 //    console.log(content);   // Put all of the code here (not the best solution)
-var content = buffer.toString('utf-8');
+	buffer.toString('utf-8');
 console.log(data);
 //}, "utf-8");
 
