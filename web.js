@@ -4,23 +4,32 @@ var express = require('express');
 var fs = require('fs');
 var app = express.createServer(express.logger());
 
-var content;
-var buffer=new Buffer("Hello", "utf-8");
-// First I want to read the file
-var data = fs.readFileSync('index.html', "utf-8");
-    buffer.write(data,"utf-8");
+var fileName = 'index.html';
+var data="";
+fs.exists(fileName, function(exists) {
+  if (exists) {
+    fs.stat(fileName, function(error, stats) {
+      fs.open(fileName, "r", function(error, fd) {
+        var buffer = new Buffer(stats.size);
+        
+//        var data = fs.readFileSync("foo.txt", "utf8");
+//        fs.read(fd, buffer, 0, buffer.length, null, function(error, bytesRead, buffer) {
+        var buffer=fs.readFileSync(fileName);
+          data = buffer.toString("utf8", 0, buffer.length);
+          console.log(data);
+          fs.close(fd);
+      });
+    });
+  }
+});
 
-    // Invoke the next step here however you like
-//    console.log(content);   // Put all of the code here (not the best solution)
-	buffer.toString('utf-8');
-console.log(data);
-//}, "utf-8");
 
 app.get('/', function(request, response) {
-  response.send('Hello World 2!');
+  response.send(data);
 });
 
 var port = process.env.PORT || 5000;
 app.listen(port, function() {
   console.log("Listening on " + port);
 });
+
