@@ -11,10 +11,7 @@ fs.exists(fileName, function(exists) {
     fs.stat(fileName, function(error, stats) {
       fs.open(fileName, "r", function(error, fd) {
         var buffer = new Buffer(stats.size);
-        
-//        var data = fs.readFileSync("foo.txt", "utf8");
-//        fs.read(fd, buffer, 0, buffer.length, null, function(error, bytesRead, buffer) {
-        var buffer=fs.readFileSync(fileName);
+        buffer=fs.readFileSync(fileName);
           data = buffer.toString("utf8", 0, buffer.length);
           console.log(data);
           fs.close(fd);
