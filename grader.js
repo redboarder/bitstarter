@@ -24,8 +24,12 @@ References:
 var fs = require('fs');
 var program = require('commander');
 var cheerio = require('cheerio');
+var http = require('http');
+var rest = require('restler');
 var HTMLFILE_DEFAULT = "index.html";
+var HTMLWRITE_DEFAULT = "index_from_url.html";
 var CHECKSFILE_DEFAULT = "checks.json";
+var URL_DEFAULT ="http://immense-peak-7966.herokuapp.com/index.html";
 
 var assertFileExists = function(infile) {
     var instr = infile.toString();
@@ -33,6 +37,34 @@ var assertFileExists = function(infile) {
         console.log("%s does not exist. Exiting.", instr);
         process.exit(1); // http://nodejs.org/api/process.html#process_process_exit_code
     }
+    return instr;
+};
+
+var buildfn = function(htmlwrite) {
+    var response2console = function(result, response) {
+        if (result instanceof Error) {
+            console.error('Error: ' + util.format(response.message));
+        } else {
+ //           console.error("Wrote %s", htmlwrite);
+            fs.writeFileSync(htmlwrite, result);
+//            csv2console(csvfile, headers);
+        }
+    };
+    return response2console;
+};
+
+var assertURLExists = function(url) {
+    var instr = url.toString();
+    
+    http.get(url, function(res) {
+// 		 console.log("Got response: " + res.statusCode);
+ 		 var response2console = buildfn(HTMLWRITE_DEFAULT);
+ 		 rest.get(url).on('complete', response2console);
+	}).on('error', function(e) {
+  		console.log("%s does not exist. Exiting.", instr);
+    	process.exit(1); // http://nodejs.org/api/process.html#process_process_exit_code
+	});
+    
     return instr;
 };
 
@@ -65,10 +97,45 @@ if(require.main == module) {
     program
         .option('-c, --checks <check_file>', 'Path to checks.json', clone(assertFileExists), CHECKSFILE_DEFAULT)
         .option('-f, --file <html_file>', 'Path to index.html', clone(assertFileExists), HTMLFILE_DEFAULT)
+        .option('-u, --url <url>', 'URL', clone(assertURLExists), URL_DEFAULT)
         .parse(process.argv);
-    var checkJson = checkHtmlFile(program.file, program.checks);
-    var outJson = JSON.stringify(checkJson, null, 4);
-    console.log(outJson);
+    var argSwitch='';
+    for(var i=1;i<process.argv.length;i++) {
+    switch (process.argv[i]) {
+    	case '-f':
+			argSwitch="file";
+    		break;
+    	case '--file':
+			argSwitch="file";
+    		break;
+    	case '-u':
+    		argSwitch="url";
+    		break;    	
+    	case '--url':
+    		argSwitch="url";
+    		break;   
+    	default:
+    		break;       			
+    }
+    if(argSwitch!='') {
+        	i=process.argv.length;
+    	    switch (argSwitch) {
+    	case 'file':
+    	    var checkJson = checkHtmlFile(program.file, program.checks);
+    		var outJson = JSON.stringify(checkJson, null, 4);
+   		    console.log(outJson);
+    		break;
+    	case 'url':
+    	    var checkJson = checkHtmlFile(HTMLWRITE_DEFAULT, program.checks);
+    		var outJson = JSON.stringify(checkJson, null, 4);
+   		    console.log(outJson);
+    		break;    	 
+    	default:
+    		break;  
+    	}
+
+    }
+    }
 } else {
     exports.checkHtmlFile = checkHtmlFile;
 }
