@@ -1,113 +1,117 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>Taste of The Big Data!!!</title>
+    <title>Taste of The Big Data</title>
    	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+   	<link rel="stylesheet" href="https://d396qusza40orc.cloudfront.net/startup%2Fcode%2Fbootstrap-combined.no-icons.min.css">
+	<link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+   	<link rel="stylesheet" href="https://d396qusza40orc.cloudfront.net/startup%2Fcode%2Fsocial-buttons.css">
+   	<script src="https://d396qusza40orc.cloudfront.net/startup%2Fcode%2Fjquery.js"></script>
+   	<script src="https://d396qusza40orc.cloudfront.net/startup%2Fcode%2Fbootstrap.js"></script>
+   	<link href="http://fonts.googleapis.com/css?family=Ubuntu:300,400,500,700,300italic,400italic,500italic,700italic" rel="stylesheet" type="text/css">
+   	<link href="http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,300,400,600,700,800" 
+   		rel="stylesheet" type="text/css">
+	<style type="text/css">
 	
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://d396qusza40orc.cloudfront.net/startup%2Fcode%2Fbootstrap-combined.no-icons.min.css">
-    <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/3.0.2/css/font-awesome.css">
-    <link rel="stylesheet" href="https://d396qusza40orc.cloudfront.net/startup%2Fcode%2Fsocial-buttons.css">    
-    <script src="https://d396qusza40orc.cloudfront.net/startup%2Fcode%2Fjquery.js"></script>
-    <script src="https://d396qusza40orc.cloudfront.net/startup%2Fcode%2Fbootstrap.js"></script>
-    <link href="http://fonts.googleapis.com/css?family=Ubuntu:300,400,500,700,300italic,400italic,500italic,700italic" rel="stylesheet" type="text/css">
-    <link href="http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,300,400,600,700,800" 
-          rel="stylesheet" type="text/css">
-	    <style type="text/css">
+			/*Large desktop */
+			@media (min-width: 980px) {
+				body {
+					padding-top:60px;
+				}
+				.linediv-l {
+					border-right: 1px white solid;
+				}
+				.linediv-r {
+					border-left: 1px white solid;
+				}
+			}
+			
+			/*Landscape phones and down */
+			@media (max-width: 480px) {
+				.copy {
+					padding: 2.5% 10%;
+				}
+				.linediv-l {
+					border-bottom: 1px white solid;
+				}
+				.linediv-r {
+					border-top: 1px white solid;
+				}
+			}
+			
+			/* All form factors */
+			
+			/* Main body and headings */
+			body {
+				font-family: 'Open Sans', Helvetica, Arial, sans-serif;
+			}
+			.heading, .subheading {
+				font-family: 'Ubuntu', Helvetica, Arial, sans-serif;
+				text-align: center;
+			}
+			p.lead {
+				padding-top:1.5%;
+				font-size: 24px;
+				line-height: 30px;
+			}
+			p {
+				font-size: 18px;
+				line-height: 24px;
+			}
+			
+			/*Video pitch and Action */
+			.pitch {
+				padding: 2.5% 0%;
+			}			
+			.order {
+				padding: 2% 0%;
+			}
+			.actions {
+				background-color: #343434;
+				padding: 3% 0%;
+			}			
+			.video, .thermometer, .order, .social, .statistics {
+				text-align: center;
+			}
+			.statistics h3, .statistics p {
+				color:white;
+			}
+			
+			/* Marketing Copy and Footer */
+			.copy {
+				padding-top: 2.5%;
+				padding-bottom: 2.5%;
+				text-align: justify;
+			}
+			.asset {
+				padding: 2.5% 0%;
+			}
+			.footer {
+				color: #cccccc;
+				text-align: center;
+			}
+			.footer p {
+				font-size: 11px;
+			}
+			.footer a {
+				color: #ccccff;
+			}
+    </style>
+	<script type="text/javascript">
 
-	      /* Large desktop */
-	      @media (min-width: 980px) { 
-	        body {
-	         padding-top: 60px;
-	        }
-	       .linediv-l {
-	         border-right: 1px white solid;
-	        }
-	       .linediv-r {
-	         border-left: 1px white solid;
-	       }
-	      }
+	  var _gaq = _gaq || [];
+	  _gaq.push(['_setAccount', 'UA-42989567-1']);
+	  _gaq.push(['_trackPageview']);
 
-	      /* Landscape phones and down */
-	      @media (max-width: 480px) { 
-	       .copy {
-	         padding: 2.5% 10%;
-	       }
-	       .linediv-l {
-	         border-bottom: 1px white solid;
-	       }
-	       .linediv-r {
-	         border-top: 1px white solid;
-	       }
-	      }
+	  (function() {
+	    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+	  })();
 
-	      /* All form factors */
-
-	      /* Main body and headings */
-	      body{
-	        font-family: 'Open Sans', Helvetica, Arial, sans-serif;
-	      }
-	      .heading, .subheading {
-	        font-family: 'Ubuntu', Helvetica, Arial, sans-serif;
-	        text-align: center;
-	      }
-	      p.lead {
-	        padding-top: 1.5%;
-	        font-size: 24px;
-	        line-height: 30px;
-	      }
-	      p {
-	        font-size: 18px;
-	        line-height: 24px;
-	      }
-
-	      /* Video pitch and Action */
-	      .pitch {
-	        padding: 2.5% 0%;
-	      }
-	      .order {
-	        padding: 2% 0%;
-	      }
-	      .actions {
-	        background-color: #343434;
-	        padding: 3% 0%;
-	      }
-	      .video, .thermometer, .order, .social, .statistics {
-	        text-align: center;
-	      }
-	      .statistics h3, .statistics p {
-	        color: white;
-	      }
-
-	      /* Marketing Copy and Footer */
-	      .copy {
-	        padding-top: 2.5%;
-	        padding-bottom: 2.5%;
-	        text-align: justify;
-	      }
-	      .asset {
-	        padding: 2.5% 0%;
-	      }
-	      .footer {
-	        color: #cccccc;
-	        text-align: center;
-	      }
-	      .footer p {
-	        font-size: 11px;
-	      }
-	      .footer a {
-	        color: #ccccff;
-	      }
-		  
-		  /* http://support.addthis.com/customer/portal/questions/1136093-share-buttons-in-center-position */      
-		   div.addthis_toolbox {
-		    width:180px;
-		    margin: 0 auto;
-		   }
-	    </style>
+	</script>
 	
-		
   </head>
   <body>
 	
@@ -196,16 +200,10 @@
 					<button class="btn btn-success btn-large">Preorder</button>
 				</div>
 				<div class="span8 offset2 social">
-					<!-- AddThis Button BEGIN -->
-					<div class="addthis_toolbox addthis_default_style addthis_32x32_style">
-					<a class="addthis_button_facebook"></a>
-					<a class="addthis_button_twitter"></a>
-					<a class="addthis_button_google_plusone_share"></a>
-					<a class="addthis_button_email"></a>
-					<a class="addthis_button_compact"></a><a class="addthis_counter addthis_bubble_style"></a>
-					</div>
-					<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=undefined"></script>
-					<!-- AddThis Button END -->
+					<!-- Social buttons are not included in default Bootstrap -->
+					<!-- bootstrap -->
+					<button class="btn btn-twitter"><i class="icon-twitter"></i> | Twitter</button>
+					<button class="btn btn-facebook"><i class="icon-facebook"></i> | Facebook</button>
 				</div>							
 			</div>
 		</div>
@@ -298,7 +296,6 @@
 			</div>
 		</div>
 	</div>
-	
 	<script>
 	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
 	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
