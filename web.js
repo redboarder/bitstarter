@@ -13,7 +13,7 @@ fs.exists(fileName, function(exists) {
         var buffer = new Buffer(stats.size);
         buffer=fs.readFileSync(fileName);
           data = buffer.toString("utf8", 0, buffer.length);
- //         console.log(data);
+          // console.log(data);
           fs.close(fd);
       });
     });
