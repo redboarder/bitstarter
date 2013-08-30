@@ -169,6 +169,13 @@
 			</div>
 			
 			<!-- We define new actions -->
+			<% var backers = 0; var bc_sum = 0; %>
+			<% for(var i=0; i<orders.length; i++) {%>
+			  <% backers = backers + 1 %>
+			  <% bc_sum = bc_sum + orders[i].amount %>
+			  <% bc_sum = Math.round(bc_sum * 10000) / 10000; %>
+			<% } %>
+			
 			<div class="span5 actions">
 				<div class="span8 offset2">
 					<div class="statistics">
@@ -177,17 +184,17 @@
 							in horizontal and veritcal layouts
 							illustrating media queries" -->
 							<div class="linediv-l">
-							<h3>1000</h3> <p>backers</p>
+							<h3><%= backers %></h3> <p>backers</p>
 							</div>
 						</div>
 						<div class="span4">
 							<div class="linediv-c">
-							<h3>$6000</h3> <p>of $10,000</p>
+							<h3><%= bc_sum %></h3> <p>of $1,000</p>
 							</div>
 						</div>
 						<div class="span4">
 							<div class="linediv-r">
-							<h3>10</h3> <p>days left</p>
+							<h3 id="countdown">5</h3> <p>days left</p>
 							</div>
 						</div>
 					</div>
@@ -196,8 +203,8 @@
 					<!-- Boostrap progress bar -->
 					<!-- bootstrap -->
 					<div class="thermometer progress active">
-						<div class="bar bar-success" style="width: 60%;"></div>
-						<div class="bar bar-warning" style="width: 40%;"></div>
+					    <div class="bar bar-success" style="width: <%= (bc_sum / 250) * 100 %>%;"></div>
+					    <div class="bar bar-warning" style="width: <%= 100 - (bc_sum / 250) * 100 %>%;"></div>
 					</div>
 				</div>
 				<div class="span6 offset3 order">
@@ -211,14 +218,10 @@
 						</script>
 				</div>
 				<div class="span8 offset2 social">
-					<!-- AddThis Button BEGIN -->
-					<div class="addthis_toolbox addthis_default_style addthis_32x32_style">
-					<a class="addthis_button_facebook"></a>
-					<a class="addthis_button_twitter"></a>
-					<a class="addthis_button_google_plusone_share"></a>
-					<a class="addthis_button_email"></a>
-					<a class="addthis_button_compact"></a><a class="addthis_counter addthis_bubble_style"></a>
-					</div>
+	                <a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
+	                <a class="addthis_button_tweet"></a>
+	                <a class="addthis_counter addthis_pill_style"></a>
+	                <script type="text/javascript">var addthis_config = {"data_track_addressbar":true};</script>
 					<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=undefined"></script>
 					<!-- AddThis Button END -->
 				</div>							
@@ -322,6 +325,20 @@
 	  ga('create', 'UA-42989567-1', 'herokuapp.com');
 	  ga('send', 'pageview');
 
+	</script>
+	
+	<script type="text/javascript">
+	  jQuery(document).ready(function($) {
+	      today = new Date();
+
+	      BigDay = new Date("September 09, 2013");
+	      msPerDay = 24 * 60 * 60 * 1000 ;
+	      timeLeft = (BigDay.getTime() - today.getTime());
+	      e_daysLeft = timeLeft / msPerDay;
+	      daysLeft = Math.floor(e_daysLeft);
+
+	      $("#countdown").text(daysLeft);
+	  });
 	</script>
 </body>
 </html>
