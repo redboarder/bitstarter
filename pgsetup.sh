@@ -14,7 +14,7 @@
 # sequelize. We can also symlink this file into the home directory.
 
 # Install postgres
-sudo apt-get install -y postgresql postgresql-contrib
+#sudo apt-get install -y postgresql postgresql-contrib
 
 # Symlink into home.
 # Note the use of backticks, PWD, and the -t flag.
@@ -38,8 +38,8 @@ PG_PASS=${TOKS[4]}
 # pgpass and try again. You can also delete the local postgres db
 # if you know how to do that. 
 echo -e "\n\nINPUT THE FOLLOWING PASSWORD TWICE BELOW: "${PG_PASS}
-sudo -u postgres createuser -U postgres -E -P -s $PG_USER
-sudo -u postgres createdb -U postgres -O $PG_USER $PG_DB
+sudo createuser -U kirill -E -P -s $PG_USER
+sudo createdb -U kirill -O $PG_USER $PG_DB
 
 # Test that it works.
 # Note that the symlinking of pgpass into $HOME should pass the password to psql and make these commands work. 
